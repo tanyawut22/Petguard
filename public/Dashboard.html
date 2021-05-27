@@ -1,0 +1,239 @@
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hospital</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="/css/vendor/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+
+	<script src="https://kit.fontawesome.com/6f337e5656.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	<!-- Custom fonts for this template-->
+    <link href="/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
+		<h2 class="w3-bar-item">Pet Guard</h2>
+		<a href="Dashboard.html" class="w3-bar-item w3-button">Dashboard</a>
+		<a href="Veterinarian.html" class="w3-bar-item w3-button">Veterinarian</a>
+		<a href="Members.html" class="w3-bar-item w3-button">Members</a>
+		<a href="Hospital.html" class="w3-bar-item w3-button">Hospital</a>
+	  </div>
+	  
+	  <div style="margin-left:10%">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-success topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                       
+
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle">
+                                <span class="mr-2 d-none d-lg-inline text-white large">Admin</span>
+                                <img class="img-profile rounded-circle"
+                                    src="/img/undraw_profile.svg">
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+				<!----------------------------------------------->
+				<!----------------------------------------------->
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<div class="d-sm-flex align-items-center justify-content-between mb-4">
+				<h1 class="h3 mb-0 text-gray-800">Overview</h1>
+			</div>
+
+			<!-- Content Row -->
+			<div class="row">
+
+				<!-- Earnings (Monthly) Card Example -->
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+										Total Veterinarian</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800 countVet">0</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Earnings (Monthly) Card Example -->
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-success shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+										Total Users</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800 count">0</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-users fa-2x text-gray-300"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-primary shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+										Total Consult</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800 countCon">0</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Earnings (Monthly) Card Example -->
+				<div class="col-xl-3 col-md-6 mb-4">
+					<div class="card border-left-info shadow h-100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Overall income
+									</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800 countEarnings">0</div>
+								</div>
+								<div class="col-auto">
+									<i class="fas fa-chart-line fa-2x text-gray-300"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Content Row -->
+
+			<div class="row">
+
+				<!-- Area Chart -->
+				<div class="col-xl-12 col-lg-7">
+					<div class="card shadow mb-4">
+						<!-- Card Header - Dropdown -->
+						<div
+							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+							<h6 class="m-0 font-weight-bold text-primary">Statistics</h6>
+							<div class="dropdown no-arrow">
+								<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+									aria-labelledby="dropdownMenuLink">
+									<div class="dropdown-header">Years:</div>
+									<a class="dropdown-item" href="#">2021</a>
+									<a class="dropdown-item" href="#">2020</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">...</a>
+								</div>
+							</div>
+						</div>
+						<!-- Card Body -->
+						<div class="card-body">
+							<div class="chart-area">
+								<canvas id="myAreaChart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				
+			</div> 
+
+			
+
+		</div>
+		<!-- container-fluid -->
+<!----------------------------------------------->
+<!----------------------------------------------->
+
+		<script src="/js/vendor/jquery.min.js"></script>
+		<script src="/js/vendor/bootstrap.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"></script>
+		<script>
+			var firebaseConfig = {
+				apiKey: "AIzaSyA24KvjvgiTM1lZPsaX_mXEF7DwBFDq7W4",
+				authDomain: "petguard-4c133.firebaseapp.com",
+				databaseURL: "https://petguard-4c133.firebaseio.com",
+				projectId: "petguard-4c133",
+				storageBucket: "petguard-4c133.appspot.com",
+				messagingSenderId: "128324258475",
+				appId: "1:128324258475:web:f537da1717941b9b4a45ee",
+				measurementId: "G-FX60H53NGG"
+			};
+			firebase.initializeApp(firebaseConfig);
+			const db = firebase.firestore();
+		</script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- 
+     Custom scripts for all pages
+    <script src="/js/sb-admin-2.min.js"></script> -->
+
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
+
+	<script src="/js/Dashboard.js"></script>
+</body>
+
+</html>

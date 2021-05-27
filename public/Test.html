@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Veterinarian</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="/css/vendor/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+
+	<script src="https://kit.fontawesome.com/6f337e5656.js" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css" />
+	
+
+</head>
+
+<body>
+	<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:10%">
+		<h2 class="w3-bar-item">Pet Guard</h2>
+		<a href="index.html" class="w3-bar-item w3-button">Dashboard</a>
+		<a href="Veterinarian.html" class="w3-bar-item w3-button">Veterinarian</a>
+		<a href="Members.html" class="w3-bar-item w3-button">Members</a>
+		<a href="Hospital.html" class="w3-bar-item w3-button">Hospital</a>
+        <a href="Test.html" class="w3-bar-item w3-button">Test</a>
+		</div>
+
+	<div style="margin-left:10%">
+
+		<div id="addvet" class="ui two column middle aligned center aligned grid">
+            <div class="column">
+              <form class="ui large form">
+                <div class="ui stacked secondary segment" >
+                    <div class="field">
+                        <p style="text-align:left;">Firstname</p>
+                          <input type="text" placeholder="Firstname" id="firstname" />
+                      </div>
+                      <div class="field">
+                        <p style="text-align:left;">Lastname</p>
+                          <input type="text" placeholder="Lastname" id="lastname" />
+                      </div>
+                      
+                      <div class="field">
+                        <p style="text-align:left;">Birthday</p>
+                          <input class="form-control" type="date" value="2011-08-19" id="birthday">
+                      </div>
+
+                      <div class="field">
+                        <p style="text-align:left;">License</p>
+                          <input type="text" placeholder="License" id="license" />
+                      </div>
+                      <div class="field">
+                        <p style="text-align:left;">Phone</p>
+                          <input type="text" placeholder="Phone" id="phone" />
+                      </div>
+                      <div class="field">
+                        <p style="text-align:left;">Education</p>
+                          <input type="text" placeholder="Education" id="education" />
+                      </div>
+                      <div class="field">
+                        <p style="text-align:left;">Cittizen ID</p>
+                          <input type="text" placeholder="Citizen ID" id="citizen" />
+                        </div>
+                       
+                    <div class="field">
+                        <p style="text-align:left;">Email</p>
+                        <input type="text" placeholder="E-mail" id="email" />
+                    </div>
+                    <div class="field">
+                        <p style="text-align:left;">Password</p>
+                        <input type="text" placeholder="Password" id="pword" />
+                    </div>
+                    <div class="field">
+                        <p style="text-align:left;">Vet Picture</p>
+                        <input type="file" id="fileUploader" />
+                    </div>
+                    <!-- <div class="field">
+                        <p style="text-align:left;">Hospital</p>
+                        <select id="VHosbox" class="form-control">
+                            <option selected>...</option>
+                            <option value="Payao Pet Clinic">Payao Pet Clinic</option>
+                            <option value="Lovely Care Animal Clinic">Lovely Care Animal Clinic</option>
+                            <option value="Bandu Animal Clinic">Bandu Animal Clinic</option>
+                        </select>
+                </div> -->
+
+                <div class="form-group">
+                    <p style="text-align:left;">Hospital</p>
+                    <select class="form-control" name="Hospital" id="Hospital" onclick="dropDown(this.value)">
+                        <option value="1">-- Select Hospital --</option>
+                    </select>
+                 </div>
+
+                  <div class=" ui fluid large teal submit button" onclick="saveData()">Sign Up</div>
+                </div>
+                <div class="ui large image">
+                  <img id="img">
+                </div>
+              </form>
+            </div>
+          </div>
+		</div>
+
+		<!----------------------------------------------->
+		<!----------------------------------------------->
+		<script src="/js/vendor/jquery.min.js"></script>
+		<script src="/js/vendor/bootstrap.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-storage.js"></script>
+
+			
+		</script>
+
+		
+		<script src="/js/Test.js"></script>
+</body>
+
+</html>
