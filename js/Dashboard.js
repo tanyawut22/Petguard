@@ -71,3 +71,10 @@ $(document).ready(function () {
     
 });
 
+function getData(callbackIN) {
+    var ref = db.ref("consultHistory");
+    ref.once('time').then(function (snapshot) {
+      callbackIN(snapshot.val())
+      console.log(time);
+    });
+  }

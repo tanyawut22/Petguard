@@ -20,6 +20,7 @@ education = document.getElementById('education'),
 citizen = document.getElementById('citizen'),
 email = document.getElementById('email'),
 pword = document.getElementById('pword'),
+Hospital = document.getElementById('Hospital'),
 fileUploader = document.getElementById('fileUploader');
 
 
@@ -45,20 +46,25 @@ docRef.get().then((querySnapshot) => {
     return Exx;
 });
 
-
-function dropDown(value){
-    var s = document.getElementById("Hospital");
-    var option = Exx
-    var opt = document.createElement("option")
-
-    for (var i = 0; i<option.length; i++){
-        var op = option[i]
-        opt.text = option[i]
-        opt.value = i 
-        s.append(opt)
-
-    }
+function solo (){
+    alert("sake")
 }
+
+var isRun = false;
+
+  var s = document.getElementById("Hospital");
+  var option = Exx
+  var hahah = localStorage.getItem(isRun)
+  console.log(hahah)
+  if(localStorage.getItem(isRun) == true){
+      alert( "wow")
+  }
+  console.log("after",hahah)
+  for (so in option ){
+      s.add(new Option(option[so]));
+      localStorage.setItem(isRun,true)
+  }
+
 
 function saveData(){
 firebase.auth().createUserWithEmailAndPassword(email.value, pword.value).then(auth => {
@@ -80,7 +86,7 @@ firebase.auth().createUserWithEmailAndPassword(email.value, pword.value).then(au
                     vtImage: url,
                     vtBalance: "0",
                     vtWorkStatus: "offline",
-                    vtHospital: $('#VHosbox').val()
+                    vtHospital: $('#Hospital').val()
                 }).then(function () {
                     console.log("Document successfully written!");
                     // $("#addEmployeeModal").modal('hide');

@@ -27,7 +27,7 @@
 		<a href="Veterinarian.html" class="w3-bar-item w3-button">Veterinarian</a>
 		<a href="Members.html" class="w3-bar-item w3-button">Members</a>
 		<a href="Hospital.html" class="w3-bar-item w3-button">Hospital</a>
-        <a href="Test.html" class="w3-bar-item w3-button">Test</a>
+        <a href="AddVet.html" class="w3-bar-item w3-button">Test</a>
 		</div>
 
 	<div style="margin-left:10%">
@@ -91,12 +91,14 @@
 
                 <div class="form-group">
                     <p style="text-align:left;">Hospital</p>
-                    <select class="form-control" name="Hospital" id="Hospital" onclick="dropDown(this.value)">
+                    <select class="form-control" name="Hospital" id="Hospital">
                         <option value="1">-- Select Hospital --</option>
                     </select>
                  </div>
-
-                  <div class=" ui fluid large teal submit button" onclick="saveData()">Sign Up</div>
+                 <div class="row">
+                  <div class=" ui fluid large teal submit button" onclick="saveData()">Save</div>
+                  <!-- <div class=" ui fluid large teal submit button" href="Veterinarian.html">Cancel</div> -->
+                </div>
                 </div>
                 <div class="ui large image">
                   <img id="img">

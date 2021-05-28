@@ -1,3 +1,4 @@
+
 //---------------------------------------------------------
 $(document).ready(function () {
     const Hospital = db.collection("vet");
