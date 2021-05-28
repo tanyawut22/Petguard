@@ -57,14 +57,6 @@ function renderOption(params) {
   });
 }
 
-Hospital.addEventListener('change', onChangeOption);
-
-function onChangeOption(val) {
-    let index = val.target.options.selectedIndex;
-
-    alert(val.target[index].innerText)
-}
-
 var isRun = false;
 
 // var hahah = localStorage.getItem(isRun);
@@ -79,54 +71,54 @@ var isRun = false;
 // }
 
 function saveData() {
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email.value, pword.value)
-    .then((auth) => {
-      firebase
-        .storage()
-        .ref("vets/" + auth.user.uid + "/profile.jpg")
-        .put(file)
-        .then(function () {
-          console.log("successfully uploded");
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email.value, pword.value)
+      .then((auth) => {
+        firebase
+          .storage()
+          .ref("vets/" + auth.user.uid + "/profile.jpg")
+          .put(file)
+          .then(function () {
+            console.log("successfully uploded");
 
-          firebase
-            .storage()
-            .ref("vets/" + auth.user.uid + "/profile.jpg")
-            .getDownloadURL()
-            .then((url) => {
-              db.collection("vet")
-                .doc(auth.user.uid)
-                .set({
-                  vtFName: $("#firstname").val(),
-                  vtLName: $("#lastname").val(),
-                  vtBDate: $("#birthday").val(),
-                  vtLicense: $("#license").val(),
-                  vtPhone: $("#phone").val(),
-                  vtEducation: $("#education").val(),
-                  vtCitizenId: $("#citizen").val(),
-                  vtEmail: $("#email").val(),
-                  vtPassword: $("#pword").val(),
-                  vtImage: url,
-                  vtBalance: "0",
-                  vtWorkStatus: "offline",
-                  vtHospital: $("#Hospital").val(),
-                })
-                .then(function () {
-                  console.log("Document successfully written!");
-                  // $("#addEmployeeModal").modal('hide');
-                })
-                .catch(function (error) {
-                  console.error("Error writing document: ", error);
-                });
-            });
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
+            firebase
+              .storage()
+              .ref("vets/" + auth.user.uid + "/profile.jpg")
+              .getDownloadURL()
+              .then((url) => {
+                db.collection("vet")
+                  .doc(auth.user.uid)
+                  .set({
+                    vtFName: $("#firstname").val(),
+                    vtLName: $("#lastname").val(),
+                    vtBDate: $("#birthday").val(),
+                    vtLicense: $("#license").val(),
+                    vtPhone: $("#phone").val(),
+                    vtEducation: $("#education").val(),
+                    vtCitizenId: $("#citizen").val(),
+                    vtEmail: $("#email").val(),
+                    vtPassword: $("#pword").val(),
+                    vtImage: url,
+                    vtBalance: "0",
+                    vtWorkStatus: "offline",
+                    vtHospital: $("#Hospital option:selected").text(),
+                  })
+                  .then(function () {
+                    console.log("Document successfully written!");
+                    // $("#addEmployeeModal").modal('hide');
+                  })
+                  .catch(function (error) {
+                    console.error("Error writing document: ", error);
+                  });
+              });
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   //----------------------------------------
 }
