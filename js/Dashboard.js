@@ -54,15 +54,16 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    const countEarnings = db.doc("stats/earnings");
+    const countVet = db.collection("consultHistory");
 
 
     // GET TOTAL SIZE
-    countEarnings.onSnapshot(snapshot => {
+    countVet.onSnapshot(snapshot => {
         let size = snapshot.size;
         $('.countEarnings').text(size);
         if (size == 0) {
             $('#selectAll').attr('disabled', true);
+            
         } else {
             $('#selectAll').attr('disabled', false);
         }
@@ -70,6 +71,7 @@ $(document).ready(function () {
 
     
 });
+
 
 function getData(callbackIN) {
     var ref = db.ref("consultHistory");

@@ -99,31 +99,31 @@ $(document).ready(function () {
     }
     
     
-    // ADD EMPLOYEE
-    $("#add-employee-form").submit(function (event) {
-        event.preventDefault();
-        db.collection('vet').add({
-                vtImage: $('#customFile').val(),
-                vtFName: $('#employee-name').val(),
-                vtLName: $('#employee-email').val(),
-                vtBDate: $('#employee-address').val(),
-                vtEmail: $('#employee-Email').val(),
-                vtLicense: $('#employee-License').val(),
-                vtPhone: $('#employee-Phone').val(),
-                vtEducation: $('#employee-Education').val(),
-                vtCitizenId: $('#employee-Citizen').val(),
-                vtPassword: $('#employee-Password').val(),
-                vtBalance: "0",
-                vtWorkStatus: "offline",
-                vtHospital: $('#VHosbox').val()
-            }).then(function () {
-                console.log("Document successfully written!");
-                $("#addEmployeeModal").modal('hide');
-            })
-            .catch(function (error) {
-                console.error("Error writing document: ", error);
-            });
-    });
+    // // ADD EMPLOYEE
+    // $("#add-employee-form").submit(function (event) {
+    //     event.preventDefault();
+    //     db.collection('vet').add({
+    //             vtImage: $('#customFile').val(),
+    //             vtFName: $('#employee-name').val(),
+    //             vtLName: $('#employee-email').val(),
+    //             vtBDate: $('#employee-address').val(),
+    //             vtEmail: $('#employee-Email').val(),
+    //             vtLicense: $('#employee-License').val(),
+    //             vtPhone: $('#employee-Phone').val(),
+    //             vtEducation: $('#employee-Education').val(),
+    //             vtCitizenId: $('#employee-Citizen').val(),
+    //             vtPassword: $('#employee-Password').val(),
+    //             vtBalance: "0",
+    //             vtWorkStatus: "offline",
+    //             vtHospital: $('#VHosbox').val()
+    //         }).then(function () {
+    //             console.log("Document successfully written!");
+    //             $("#addEmployeeModal").modal('hide');
+    //         })
+    //         .catch(function (error) {
+    //             console.error("Error writing document: ", error);
+    //         });
+    // });
 
     // DELETE EMPLOYEE
     $(document).on('click', '.js-delete-employee', function () {
@@ -165,7 +165,7 @@ $(document).ready(function () {
         $('#edit-employee-form').attr('edit-id', id);
         db.collection('vet').doc(id).get().then(function (document) {
             if (document.exists) {
-                $('#edit-employee-form #customFile').val(document.data().vtImage);
+                // $('#edit-employee-form #fileUploader').val(document.data().vtImage);
                 $('#edit-employee-form #employee-name').val(document.data().vtFName);
                 $('#edit-employee-form #employee-email').val(document.data().vtLName);
                 $('#edit-employee-form #employee-address').val(document.data().vtBDate);
@@ -190,7 +190,7 @@ $(document).ready(function () {
         event.preventDefault();
         let id = $(this).attr('edit-id');
         db.collection('vet').doc(id).update({
-            vtImage: $('#edit-employee-form #customFile').val(),
+            // vtImage: $('#edit-employee-form #fileUploader').val(),
             vtFName: $('#edit-employee-form #employee-name').val(),
             vtLName: $('#edit-employee-form #employee-email').val(),
             vtBDate: $('#edit-employee-form #employee-address').val(),
@@ -281,3 +281,116 @@ $(document).ready(function () {
         $('.modal:visible').each(centerModal);
     });
 }(jQuery));
+
+
+const firstname = document.getElementById("firstname"),
+  lastname = document.getElementById("lastname"),
+  birthday = document.getElementById("birthday"),
+  license = document.getElementById("license"),
+  phone = document.getElementById("phone"),
+  education = document.getElementById("education"),
+  citizen = document.getElementById("citizen"),
+  email = document.getElementById("email"),
+  pword = document.getElementById("pword"),
+  Hospital = document.getElementById("Hospital"),
+  fileUploader = document.getElementById("fileUploader");
+
+let file = {};
+
+fileUploader.addEventListener("change", function (e) {
+  file = e.target.files[0];
+});
+
+function chooseFile(e) {
+  file = e.target.files[0];
+}
+
+var Exx = [];
+var docRef = db.collection("hospital");
+docRef.get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    Exx.push(doc.data().hsName);
+    // document.getElementById("Hospital").innerHTML = Exx.toString();
+    console.log(doc.id, " => ", doc.data().hsName);
+  });
+  renderOption(Exx);
+});
+
+function solo() {
+  alert("sake");
+}
+function renderOption(params) {
+  params.forEach((element, index) => {
+    var option = document.createElement("option");
+    option.text = element;
+    option.value = index + 1;
+    Hospital.append(option);
+  });
+}
+
+var isRun = false;
+
+// var hahah = localStorage.getItem(isRun);
+// console.log(hahah);
+// if (localStorage.getItem(isRun) == true) {
+//   alert("wow");
+// }
+// console.log("after", hahah);
+// for (so in option) {
+//   s.add(new Option(option[so]));
+//   localStorage.setItem(isRun, true);
+// }
+
+function saveData() {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email.value, pword.value)
+      .then((auth) => {
+        firebase
+          .storage()
+          .ref("vets/" + auth.user.uid + "/profile.jpg")
+          .put(file)
+          .then(function () {
+            console.log("successfully uploded");
+
+            firebase
+              .storage()
+              .ref("vets/" + auth.user.uid + "/profile.jpg")
+              .getDownloadURL()
+              .then((url) => {
+                db.collection("vet")
+                  .doc(auth.user.uid)
+                  .set({
+                    vtFName: $("#firstname").val(),
+                    vtLName: $("#lastname").val(),
+                    vtBDate: $("#birthday").val(),
+                    vtLicense: $("#license").val(),
+                    vtPhone: $("#phone").val(),
+                    vtEducation: $("#education").val(),
+                    vtCitizenId: $("#citizen").val(),
+                    vtEmail: $("#email").val(),
+                    vtPassword: $("#pword").val(),
+                    vtImage: url,
+                    vtBalance: "0",
+                    vtWorkStatus: "offline",
+                    vtHospital: $("#Hospital option:selected").text(),
+                  })
+                  .then(function () {
+                    console.log("Document successfully written!");
+                    // $("#addEmployeeModal").modal('hide');
+                  })
+                  .catch(function (error) {
+                    console.error("Error writing document: ", error);
+                  });
+              });
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  //----------------------------------------
+}
