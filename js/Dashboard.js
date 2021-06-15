@@ -60,10 +60,9 @@ $(document).ready(function () {
     // GET TOTAL SIZE
     countVet.onSnapshot(snapshot => {
         let size = snapshot.size;
-        $('.countEarnings').text(size);
+        $('.countEarnings').text(size*200);
         if (size == 0) {
             $('#selectAll').attr('disabled', true);
-            
         } else {
             $('#selectAll').attr('disabled', false);
         }

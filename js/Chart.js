@@ -1,19 +1,20 @@
-function getData(callbackIN) {
-    var ref = firebase.database().ref("data");
-    ref.once('value').then(function (snapshot) {
-      callbackIN(snapshot.val())
-    });
-  }
+// function getData(callbackIN) {
+//     var ref = firebase.database().ref("data");
+//     ref.once('value').then(function (snapshot) {
+//       callbackIN(snapshot.val())
+//     });
+//   }
 
-  function genFunction(data) {
-    var cdata = [];
-    var len = data.length;
-    for(var i=1; i<len; i++) {
-      cdata.push({
-        label: data[i]['label'],
-        value: data[i]['value']
-      });
-    }
+//   function genFunction(data) {
+//     var cdata = [];
+//     var len = data.length;
+//     for(var i=1; i<len; i++) {
+//       cdata.push({
+//         label: data[i]['label'],
+//         value: data[i]['value']
+//       });
+//       console.log(label);
+//     }
 
 
     var Exx = [];
@@ -21,17 +22,22 @@ var docRef = db.collection("consultHistory");
 docRef.get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-            Exx.push(doc.data().hsName);
+            Exx.push(doc.data().time);
             // document.getElementById("Hospital").innerHTML = Exx.toString();
-        console.log(doc.id, " => ", doc.data().hsName);
+        console.log(doc.id, " => ", doc.data().time.toDate());
     });
     console.log(Exx);
     return Exx;
 });
 
 
-
-
+// db.collection("consultHistory").doc(id).snapshotChanges().pipe(
+//   map(doc => {
+//   const data = doc.payload.data();
+//   data.date = convertTimestamp(data.date);
+//   return data;
+// })
+// )
 
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -152,5 +158,5 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
-myLineChart.render();
-  }
+// myLineChart.render();
+//   }
