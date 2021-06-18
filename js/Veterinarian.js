@@ -163,7 +163,7 @@ $(document).ready(function () {
       $('#edit-employee-form').attr('edit-id', id);
       db.collection('vet').doc(id).get().then(function (document) {
         if (document.exists) {
-            // $('#edit-employee-form #fileUploader').val(document.data().vtImage);
+            // $('#edit-employee-form #file').val(document.data().vtImage);
             $('#edit-employee-form #firstname').val(document.data().vtFName);
             $('#edit-employee-form #lastname').val(document.data().vtLName);
             $('#edit-employee-form #birthday').val(document.data().vtBDate);
@@ -173,7 +173,7 @@ $(document).ready(function () {
             $('#edit-employee-form #citizen').val(document.data().vtCitizenId);
             $('#edit-employee-form #email').val(document.data().vtEmail);
             $('#edit-employee-form #pword').val(document.data().vtPassword);
-            $('#edit-employee-form #HospitalEdit').val(document.data().vtHospital);
+            $('#HospitalEdit').val(document.data().vtHospital);
             
             $('#editEmployeeModal').modal('show');
           } else {
@@ -198,8 +198,11 @@ $(document).ready(function () {
         vtCitizenId: $('#edit-employee-form #citizen').val(),
         vtEmail: $('#edit-employee-form #email').val(),
         vtPassword: $('#edit-employee-form #pword').val(),
-        vtHospital: $('#edit-employee-form #HospitalEdit').val()
+        vtHospital:$("#HospitalEdit option:selected").val()
       });
+      
+      console.log("Document successfully update");
+      alert("Document successfully update");
       $('#editEmployeeModal').modal('hide');
   });
 
@@ -319,19 +322,19 @@ docRef.get().then((querySnapshot) => {
 
 
 function renderOption(params) {
-  params.forEach((element, index) => {
+  params.forEach((element) => {
     var option = document.createElement("option");
     option.text = element;
-    option.value = index + 1;
+    option.value = element;
     Hospital.append(option);
   });
 }
 
 function renderOptionEdit(params) {
-  params.forEach((element, index) => {
+  params.forEach((element) => {
     var option = document.createElement("option");
     option.text = element;
-    option.value = index + 1;
+    option.value = element;
     HospitalEdit.append(option);
   });
 }
@@ -359,46 +362,44 @@ function saveData() {
           .put(file)
           .then(function () {
             console.log("successfully uploded");
-
             firebase
-              .storage()
-              .ref("vets/" + auth.user.uid + "/profile.jpg")
-              .getDownloadURL()
-              .then((url) => {
-                db.collection("vet")
-                  .doc(auth.user.uid)
-                  .set({
-                    vtFName: $("#firstname").val(),
-                    vtLName: $("#lastname").val(),
-                    vtBDate: $("#birthday").val(),
-                    vtLicense: $("#license").val(),
-                    vtPhone: $("#phone").val(),
-                    vtEducation: $("#education").val(),
-                    vtCitizenId: $("#citizen").val(),
-                    vtEmail: $("#email").val(),
-                    vtPassword: $("#pword").val(),
-                    vtImage: url,
-                    vtBalance: "0",
-                    vtWorkStatus: "offline",
-                    vtHospital: $("#Hospital option:selected").text(),
-                  })
-                  .then(function () {
-                    console.log("Document successfully written!");
-                    // $("#addEmployeeModal").modal('hide');
-                  })
-                  .catch(function (error) {
-                    console.error("Error writing document: ", error);
-                  });
-                console.log(firstname);
-              });
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+            .storage()
+            .ref("vets/" + auth.user.uid + "/profile.jpg")
+            .getDownloadURL()
+            .then((url) => {
+              db.collection("vet")
+                .doc(auth.user.uid)
+                .set({
+                  vtFName: $("#firstname").val(),
+                  vtLName: $("#lastname").val(),
+                  vtBDate: $("#birthday").val(),
+                  vtLicense: $("#license").val(),
+                  vtPhone: $("#phone").val(),
+                  vtEducation: $("#education").val(),
+                  vtCitizenId: $("#citizen").val(),
+                  vtEmail: $("#email").val(),
+                  vtPassword: $("#pword").val(),
+                  vtImage: url,
+                  vtBalance: "0",
+                  vtWorkStatus: "offline",
+                  vtHospital: $("#Hospital option:selected").text(),
+                })
+                .then(function () {
+                  console.log("Document successfully written!");
+                  // $("#addEmployeeModal").modal('hide');
+                })
+                .catch(function (error) {
+                  console.error("Error writing document: ", error);
+                });
+            });
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
   //----------------------------------------
 }
 

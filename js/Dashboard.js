@@ -72,10 +72,28 @@ $(document).ready(function () {
 });
 
 
-function getData(callbackIN) {
-    var ref = db.ref("consultHistory");
-    ref.once('time').then(function (snapshot) {
-      callbackIN(snapshot.val())
-      console.log(time);
-    });
-  }
+// function getData(callbackIN) {
+//     var ref = db.ref("consultHistory");
+//     ref.once('time').then(function (snapshot) {
+//       callbackIN(snapshot.val())
+//       console.log(time);
+//     });
+//   }
+
+  $(document).on('click', '.logoutBtn', function () {
+    // let id = $(this).attr('id');
+    // $('#delete-employee-form').attr('delete-id', id);
+    $('#logoutModal').modal('show');
+    console.log("Check")
+});
+
+$("#modal-dialog").submit(function (event) {
+    event.preventDefault();
+    window.location = "login.html";
+});
+
+
+function logout() {
+    alert();
+    window.location = "login.html";
+}
